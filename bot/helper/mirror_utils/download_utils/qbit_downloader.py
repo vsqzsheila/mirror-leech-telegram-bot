@@ -140,7 +140,7 @@ class QbitTorrent:
             tor_info = tor_info[0]
             if tor_info.state == "metaDL":
                 self.stalled_time = time.time()
-                if time.time() - self.meta_time >= 999999999: # timeout while downloading metadata
+                if time.time() - self.meta_time >= 60: # timeout while downloading metadata
                     self.client.torrents_pause(torrent_hashes=self.ext_hash)
                     time.sleep(0.3)
                     self.listener.onDownloadError("Dead Torrent!")
@@ -193,7 +193,7 @@ class QbitTorrent:
             elif tor_info.state == "stalledDL":
                 if tor_info.downloaded >= tor_info.size and tor_info.progress >= 1:
                     self.client.torrents_recheck(torrent_hashes=self.ext_hash)
-                elif time.time() - self.stalled_time >= 999999999: # timeout after downloading metadata
+                elif time.time() - self.stalled_time >= 60: # timeout after downloading metadata
                     self.client.torrents_pause(torrent_hashes=self.ext_hash)
                     time.sleep(0.3)
                     self.listener.onDownloadError("Dead Torrent!")
