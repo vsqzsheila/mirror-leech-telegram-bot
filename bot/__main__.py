@@ -62,8 +62,8 @@ def stats(update, context):
 
 def start(update, context):
     buttons = button_build.ButtonMaker()
-    buttons.buildbutton("Repo", "https://www.github.com/anasty17/mirror-leech-telegram-bot")
-    buttons.buildbutton("Report Group", "https://t.me/+MwgSi5vmQEA2N2Vk")
+    buttons.buildbutton("Update", "https://t.me/xiaogeneral")
+    buttons.buildbutton("Group", "https://t.me/xiaomirr")
     reply_markup = InlineKeyboardMarkup(buttons.build_menu(2))
     if CustomFilters.authorized_user(update) or CustomFilters.authorized_chat(update):
         start_string = f'''
@@ -173,7 +173,7 @@ help_string_telegraph = f'''<br>
 '''
 
 help = telegraph.create_page(
-        title='Mirror-Leech-Bot Help',
+        title='Xiao Cloud Help',
         content=help_string_telegraph,
     )["path"]
 
